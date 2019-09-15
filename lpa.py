@@ -19,11 +19,11 @@ def largePalAna(n):
     #convert n to binary string 
     bin_str = str(bin(n))[2:]
 
-    #count ammount of 1s and 0s in the string
+    #count amount of 1s and 0s in the string
     zeros = bin_str.count('0')
     ones  = len(bin_str) - zeros
 
-    #construct largest palindromic anagram from an ammount of 1s and 0s
+    #construct largest palindromic anagram from an amount of 1s and 0s
     pal = ""
 
     #place all 0s in the middle of the string
