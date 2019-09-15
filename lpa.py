@@ -5,7 +5,7 @@ def main():
     
     #define the range of terms that will be generated here
 
-    range_ = range(0, 2**16) #largePalAna(n) is self simmilar on intervals of 2^n
+    range_ = range(0, 2**16) #largePalAna(n) is self similar on intervals of 2^n
 
     seq = [largePalAna(i) for i in range_]
 
