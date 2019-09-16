@@ -1,0 +1,1 @@
+just a repo for interesting functions that Ill eventually submit to the OEIS
