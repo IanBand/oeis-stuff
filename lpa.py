@@ -6,7 +6,7 @@ def main():
 
 
     #define the range of terms that will be generated here
-    range_ = range(0, 2**16) 
+    range_ = range(0, 2**20) 
 
     seq = [lpa2(i) for i in range_]
 
