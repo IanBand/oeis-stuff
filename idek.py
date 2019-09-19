@@ -1,4 +1,5 @@
 import math
+import json
 import matplotlib.pyplot as plt
 import fractions
 
@@ -8,13 +9,24 @@ def main():
     range_ = range(0, r) 
 
     seq = wanderingSum(r)
-    plt.scatter(range_, seq, 5)
+
+    plt.scatter(range_, seq, 0.05)
+
+    #plt.xlim(20000, 40000)
+
+    #plt.ylim(0, 8000000)
 
     plt.yscale('log')
     #plt.xscale('log')
     plt.show()
 
-    #print(a_iter(93))
+    #save output data
+    with open("A327586_py.json", 'w') as outfile:
+        json.dump(seq, outfile)
+    outfile.close()
+
+
+    #print(wanderingSum(70))
 
 #a(n) = (a(n-1) + a(n-2))/gcd(a(n-1), a(n-2)) if gcd(a(n-1), a(n-2)) != 1
 def a_recursive(n):
@@ -88,23 +100,45 @@ def last_3_recursive(n):
     return int((a2 + a3) / gcd23) - a1
 
 
-#sum every a(n)th term
-def wanderingSum(n): #generates an array of the first n terms of the series
+def wanderingSum(t): #generates an array of the first t terms of the series. t > 2
+
     #allocate array
-    a = [None] * n
+    a = [None] * t
+
+    #define a(0), a(1), a(2)
     a[0] = 1
     a[1] = 2
     a[2] = 3
 
-    for i in range(3, n):
-        gap = a[i-1]
-        s = 0
-        j = 1
-        while j < i:
-            s += a[j]
-            j = j + (gap % a[j]) + 1
+    #calculate all terms up to a(t)
+    for n in range(3, t):
 
-        a[i] = s
+        i = 1 #the index of the sequence that will be examined
+
+        length = a[n-1] #length is used to calculate the distance that the index, i will jump
+        
+        sum_ = 0 #sum of all a[i]
+        
+        while i < n:
+
+            #print i
+            #print("a(" + str(i) + ")"),
+            #add a[i] to the sum
+            sum_ += a[i]
+
+            #compute the next jump distance
+            jumpDistance = (length % a[i]) + 1
+
+            #increase i by the jump distance
+            i += jumpDistance
+
+            #if(i < n):
+                #print("+"),
+
+
+        a[n] = sum_
+        #print("= a(" + str(n) + ") = " + str(a[n]))
+
     return a
 if __name__ == "__main__":
     main()
