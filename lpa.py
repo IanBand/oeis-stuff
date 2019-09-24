@@ -6,7 +6,7 @@ def main():
 
 
     #define the range of terms that will be generated here
-    range_ = range(0, 2**20) 
+    range_ = range(0, 2**12) 
 
     seq = [lpa2(i) for i in range_]
 
@@ -15,6 +15,11 @@ def main():
     for i in range(0, 20):
         print(str(seq[i]) + ','),
     plt.show()
+
+    with open("b327296.txt", 'w') as outfile:
+        for i in range_:
+            outfile.write(str(i) + " " + str(seq[i]) + "\n")
+    outfile.close()
 
 
 

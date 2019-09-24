@@ -10,20 +10,26 @@ def main():
 
     seq = wanderingSum(r)
 
-    plt.scatter(range_, seq, 0.05)
+    #plt.scatter(range_, seq, 5)
 
     #plt.xlim(20000, 40000)
 
-    #plt.ylim(0, 8000000)
+    #plt.ylim(0, 2000)
 
-    plt.yscale('log')
+    #plt.yscale('log')
     #plt.xscale('log')
-    plt.show()
+    #plt.show()
 
     #save output data
-    with open("A327586_py.json", 'w') as outfile:
-        json.dump(seq, outfile)
+    #with open("A327586_py.json", 'w') as outfile:
+    #    json.dump(seq, outfile)
+    #outfile.close()
+
+    with open("A327586_py_b.txt", 'w') as outfile:
+        for i in range_:
+            outfile.write(str(i) + " " + str(seq[i]) + "\n")
     outfile.close()
+
 
 
     #print(wanderingSum(70))
